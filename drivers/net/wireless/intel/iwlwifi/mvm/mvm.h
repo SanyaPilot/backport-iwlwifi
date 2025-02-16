@@ -835,7 +835,6 @@ enum iwl_mvm_queue_status {
 #define IWL_MVM_DQA_QUEUE_TIMEOUT	(5 * HZ)
 #define IWL_MVM_NUM_CIPHERS             10
 
-#ifdef CONFIG_ACPI
 #define IWL_MVM_SAR_TABLE_SIZE		10
 #define IWL_MVM_SAR_PROFILE_NUM		4
 
@@ -843,7 +842,6 @@ struct iwl_mvm_sar_profile {
 	bool enabled;
 	u8 table[IWL_MVM_SAR_TABLE_SIZE];
 };
-#endif
 
 struct iwl_mvm {
 	/* for logger access */
@@ -1236,12 +1234,10 @@ struct iwl_mvm {
 	bool drop_bcn_ap_mode;
 
 	struct delayed_work cs_tx_unblock_dwork;
-#ifdef CONFIG_ACPI
 	struct iwl_mvm_sar_profile sar_profiles[IWL_MVM_SAR_PROFILE_NUM];
 #ifdef CPTCFG_IWLMVM_VENDOR_CMDS
 	u8 sar_chain_a_profile;
 	u8 sar_chain_b_profile;
-#endif
 #endif
 };
 
